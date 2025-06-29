@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Stop the default clocks interval
     if (intervalId) clearInterval(intervalId);
 
+    if (selectedTimezone === "current") {
+      selectedTimezone = moment.tz.guess();
+    }
+
     let cityTime = moment().tz(selectedTimezone);
     let citiesElement = document.querySelector("#cities");
     let cityName = selectedTimezone.split("/")[1].replace("_", " ");
